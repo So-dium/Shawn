@@ -1,0 +1,6 @@
+else puts("Access granted");
+00007FF7978F18B2  lea         rcx,[string "Access granted" (07FF7978F9C60h)]  
+00007FF7978F18B9  call        qword ptr [__imp_puts (07FF7979002E8h)]  
+
+rbp 	 0x0000003E119FF930
+Password 0x0000003E119FF938
