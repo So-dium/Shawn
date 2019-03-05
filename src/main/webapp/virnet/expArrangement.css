@@ -1,0 +1,28 @@
+.notSelectedARG {
+	position: relative;
+}
+
+.addHighlightARG {
+	box-shadow: 0 0 20px 0px #05b733;
+	cursor: pointer;
+}
+
+.addARG {
+	box-shadow: 0 0 20px 0px #05b733;
+	cursor: pointer;
+}
+
+.delHighlightARG {
+	box-shadow: 0 0 20px 0px #e81600;
+	cursor: pointer;
+}
+
+.delARG {
+	box-shadow: 0 0 20px 0px #e81600;
+	cursor: pointer;
+}
+
+.addDelARG {
+	float: right;
+	min-width: initial
+}

@@ -1,0 +1,7 @@
+@charset "utf-8";
+/* CSS Document */
+#body_bg {
+	background-image: url(../images/tuoputu.png);
+	background-repeat: no-repeat;
+	background-size: 60%;
+}

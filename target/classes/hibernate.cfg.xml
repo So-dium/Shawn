@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE hibernate-configuration PUBLIC  
+           "-//Hibernate/Hibernate Configuration DTD 3.0//EN"  
+           "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+
+
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="connection.url">jdbc:mysql://202.112.113.133:3306/virnet?Unicode=true&amp;characterEncoding=UTF-8</property>
+		<property name="connection.username">virnetdb</property>
+		<property name="connection.password">virnetdb</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="myeclipse.connection.profile">virnet</property>
+
+		<property name="connection.autoReconnect">true</property>
+		<property name="connection.autoReconnectForPools">true</property>
+		<property name="connection.is-connection-validation-required">true</property>
+
+		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.format_sql">true</property>
+
+		<property name="hibernate.hbm2ddl.auto">none</property>
+
+		<property name="hibernate.jdbc.fetch_size">100</property>
+		<property name="hibernate.jdbc.batch_size">30</property>
+
+		<!-- 配置c3p0连接池(解决MySQL空闲8小时自动断开问题) <property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> 
+			<property name="hibernate.c3p0.acquireIncrement">10</property> <property 
+			name="hibernate.c3p0.checkoutTimeout">30000</property> <property name="hibernate.c3p0.idleConnectionTestPeriod">900</property> 
+			<property name="hibernate.c3p0.maxIdleTime">4000</property> <property name="hibernate.c3p0.maxPoolSize">60</property> 
+			<property name="hibernate.c3p0.minPoolSize">1</property> <property name="hibernate.c3p0.maxStatements">0</property> 
+			<property name="hibernate.c3p0.validate">true</property> <property name="hibernate.c3p0.testConnectionOnCheckout">false</property> -->
+
+		<mapping resource="virnet/management/entity/hbm/Appointment.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Power.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Case.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/CaseMember.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/CaseExp.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Character.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/CharacterPower.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Ordermember.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Order.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Rucstu.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/User.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/UserCharacter.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Exp.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Course.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Class.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Classarrange.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/ClassarrangeCase.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/expArrange.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Periodarrange.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Semester.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/PeriodarrangeWeek.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/ClassTeacher.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Classgroup.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Groupmember.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/StuClass.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Courseexp.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Facilities.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/Facilityntc.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/PhysicsMachines.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/CabinetTemplet.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/CabinetTempletDevice.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/ExpTask.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/ExpAutoTopo.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/ExpAutoPing.hbm.xml" />
+		<mapping resource="virnet/management/entity/hbm/AutoScore.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ExpTopo.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ExpTopoPosition.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ExpConnect.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ExpConfig.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ExpDeviceConfig.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ExpVerify.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ExpVerifyPing.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ResultTask.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ResultTopo.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ResultConnect.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ResultConfig.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ResultDeviceConfig.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ResultVerify.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ResultVerifyPing.hbm.xml" />
+		<mapping resource="virnet/experiment/entity/hbm/ResultTopoPosition.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>  

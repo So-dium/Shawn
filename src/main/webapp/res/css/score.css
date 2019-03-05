@@ -1,0 +1,303 @@
+@charset "utf-8";
+/* CSS Document */
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form,
+	fieldset, input, textarea, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#ansCanvas {
+	position: absolute;
+	top: 10%;
+	left: 0%;
+	border: 8px solid #339933;
+	border-radius: 3px 3px 3px 3px;
+}
+
+#newexpCanvas {
+	position: absolute;
+	top: 10%;
+	left: 53%;
+	border: 5px solid #e4e4e4;
+	border-radius: 3px 3px 3px 3px;
+}
+
+.scorehead {
+	position: absolute;
+	top: 10%;
+	left: 0%;
+	width: 100%;
+	height: 10%;
+}
+
+.last {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 15%;
+	height: 100%;
+}
+
+.last button {
+	background-color: #019875;
+	border-color: #017F62;
+	color: #fff;
+	float: left;
+	margin: 2px 2px;
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.next {
+	position: absolute;
+	top: 0%;
+	left: 85%;
+	width: 15%;
+	height: 100%;
+}
+
+.scoretitle {
+	position: absolute;
+	top: 0%;
+	left: 15%;
+	width: 70%;
+	height: 100%;
+	text-align: center;
+}
+
+.topo {
+	position: absolute;
+	top: 20%;
+	left: 5%;
+	width: 90%;
+	height: 550px;
+}
+
+.anstopotitle {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 20%;
+	height: 10%;
+}
+
+.topotitle {
+	position: absolute;
+	top: 0%;
+	left: 53%;
+	width: 20%;
+	height: 10%;
+}
+
+.toposcore {
+	position: absolute;
+	top: 115%;
+	left: 90%;
+	width: 10%;
+	height: 10%;
+}
+
+.configure {
+	position: absolute;
+	top: 150%;
+	left: 5%;
+	width: 90%;
+	height: 50%;
+}
+
+.ansconfiguretitle {
+	position: absolute;
+	top: 5%;
+	left: 0%;
+	width: 20%;
+	height: 10%;
+}
+
+.configuretitle {
+	position: absolute;
+	top: 5%;
+	left: 50%;
+	width: 20%;
+	height: 10%;
+}
+
+.selectmachane {
+	position: absolute;
+	top: 15%;
+	left: 50%;
+	width: 45%;
+	height: 10%;
+}
+
+.selectmachane button {
+	width: 8%;
+	height: 100%;
+	position: relative;
+	background-color: #019875;
+	border-color: #017F62;
+	color: #fff;
+	float: left;
+	margin: 2px 2px;
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.ansselect {
+	position: absolute;
+	top: 15%;
+	left: 0%;
+	width: 45%;
+	height: 10%;
+}
+
+.ansselect button {
+	width: 8%;
+	height: 100%;
+	position: relative;
+	background-color: #019875;
+	border-color: #017F62;
+	color: #fff;
+	float: left;
+	margin: 2px 2px;
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.configurefilearea {
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	width: 45%;
+	height: 70%;
+	border: 1px solid #186f8f;
+	overflow: auto;
+	padding: 5px;
+	box-shadow: 1px 1px 15px 0px #333;
+}
+
+.ansconfigure {
+	position: absolute;
+	top: 25%;
+	left: 0%;
+	width: 45%;
+	height: 70%;
+	border: 5px solid #339933;
+	overflow: auto;
+	padding: 5px;
+	box-shadow: 1px 1px 15px 0px #333;
+}
+
+.configurescore {
+	position: absolute;
+	top: 100%;
+	left: 90%;
+	width: 10%;
+	height: 20%;
+}
+
+.ping {
+	position: absolute;
+	top: 100%;
+	left: 5%;
+	width: 90%;
+	height: 50%;
+}
+
+.anspingtitle {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 20%;
+	height: 10%;
+}
+
+.pingtitle {
+	position: absolute;
+	top: 0%;
+	left: 50%;
+	width: 20%;
+	height: 10%;
+}
+
+.pingtable {
+	position: absolute;
+	top: 10%;
+	left: 50%;
+	width: 45%;
+	height: 80%;
+}
+
+.ansping {
+	position: absolute;
+	top: 10%;
+	left: 0%;
+	width: 45%;
+	height: 80%;
+}
+
+.pingscore {
+	position: absolute;
+	top: 60%;
+	left: 90%;
+	width: 10%;
+	height: 10%;
+}

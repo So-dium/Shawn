@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document */
+.sidebar-nav {
+	background-color: #333;
+	border: #000 solid thin;
+}
+
+.nav-new li a {
+	text-align: center;
+}
+
+.nav-new li {
+	text-align: center;
+}
+
+.sidebar-active {
+	background-color: #eee;
+}
+
+.sidebar-active a {
+	color: #000;
+}
+
+.sidebar-nonactive {
+	background-color: #333;
+}
+
+.sidebar-nonactive a {
+	color: #fff;
+}
+
+.nav-new li:hover a {
+	color: #000;
+}
+
+.tittle {
+	font-size: 36px;
+}
+
+.btn-new {
+	color: #FFF;
+	background-color: #000;
+	margin-top: 20px;
+}
+
+.btn-next {
+	display: block;
+}
+
+.edit {
+	border-bottom: thin dashed #0033FF;
+}

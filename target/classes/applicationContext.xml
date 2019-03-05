@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:jms="http://www.springframework.org/schema/jms" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd   
+        http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd   
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd   
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd   
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd   
+        http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-3.2.xsd   
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.2.xsd   
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd   
+        http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.2.xsd   
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd   
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd   
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="packagesToScan">
+			<list>
+				<value>virnet.management.entity</value>
+			</list>
+		</property>
+		<property name="configLocation" value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+
+	<!-- action -->
+	<bean id="login" class="virnet.management.user.action.LoginAction">
+		<property name="loginService">
+			<ref bean="loginService" />
+		</property>
+	</bean>
+	<bean id="information" class="virnet.management.information.action.InformationAction">
+		<property name="informationService">
+			<ref bean="informationService" />
+		</property>
+	</bean>
+	<bean id="time"
+		class="virnet.management.timemanagement.action.TimeManagementAction">
+		<property name="timeService">
+			<ref bean="timeService" />
+		</property>
+	</bean>
+
+	<!-- service -->
+	<bean id="loginService" class="virnet.management.user.service.LoginService">
+	</bean>
+
+	<bean id="informationService"
+		class="virnet.management.information.service.InformationService">
+
+	</bean>
+
+	<bean id="timeService"
+		class="virnet.management.timemanagement.service.TimeManagementService">
+
+	</bean>
+
+	<!-- interceptor -->
+	<bean id="interceptor" class="virnet.management.interceptor.VirnetInterceptor"></bean>
+</beans>

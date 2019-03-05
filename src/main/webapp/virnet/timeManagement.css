@@ -1,0 +1,49 @@
+.course-table {
+	margin-top: 30px;
+}
+
+.course-table td:hover {
+	
+}
+
+.courseTable-th {
+	text-align: center;
+}
+
+.courseTable-selected {
+	/*position:relative;*/
+	background-color: #CCFFFF;
+}
+
+.away-from {
+	padding: 0 0 0 15px !important;
+}
+
+.notSelected {
+	position: relative;
+}
+
+.addHighlight {
+	box-shadow: 0 0 20px 0px #05b733;
+	cursor: pointer;
+}
+
+.add {
+	box-shadow: 0 0 20px 0px #05b733;
+	cursor: pointer;
+}
+
+.delHighlight {
+	box-shadow: 0 0 20px 0px #e81600;
+	cursor: pointer;
+}
+
+.del {
+	box-shadow: 0 0 20px 0px #e81600;
+	cursor: pointer;
+}
+
+.addDel {
+	float: right;
+	min-width: initial
+}

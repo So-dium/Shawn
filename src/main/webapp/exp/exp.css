@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+.btn-new {
+	color: #FFF;
+	background-color: #000;
+	margin-top: 20px;
+}
+
+.btn-next {
+	display: block;
+}
+
+.edit {
+	border-bottom: thin dashed #0033FF;
+}

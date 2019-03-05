@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+
+	<constant name="struts.action.excludePattern" value="/websck,/sockjs/websck/info"></constant>
+
+	<package name="vir_network.websocket" namespace="/"
+		extends="struts-default,json-default">
+	</package>
+
+	<package name="virnet" namespace="/" extends="struts-default,json-default">
+		<interceptors>
+			<interceptor name="interceptor" class="interceptor"></interceptor>
+			<interceptor-stack name="virnetManagementStack">
+				<interceptor-ref name="interceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="virnetManagementStack"></default-interceptor-ref>
+
+		<global-results>
+			<result name="login" type="redirect">log/login.jsp</result>
+		</global-results>
+
+		<action name="login" class="login" method="login">
+			<result name="success" type="redirect">virnet/virnet.jsp</result>
+			<result name="error" type="redirect">log/login.jsp</result>
+
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+		<action name="loadInfo" class="information" method="loadInfo">
+			<result name="success" type="json">
+				<param name="root">results</param>
+			</result>
+			<result name="login">log/login.jsp</result>
+		</action>
+
+		<action name="loadFacilitiesInfo" class="information" method="loadFacilitiesInfo">
+			<result name="success" type="json">
+				<param name="root">results</param>
+			</result>
+		</action>
+
+		<action name="showDetail" class="information" method="showDetail">
+			<result name="success" type="json">
+				<param name="root">detail</param>
+			</result>
+		</action>
+
+		<action name="showTimeArrange" class="time" method="showTimeArrange">
+			<result name="success" type="json">
+				<param name="root">results</param>
+			</result>
+		</action>
+
+		<action name="editTimeArrange" class="time" method="editTimeArrange">
+			<result name="success" type="json">
+				<param name="root">results</param>
+			</result>
+		</action>
+
+		<action name="courseTableInfo" class="time" method="courseTableInfo">
+			<result name="success" type="json">
+				<param name="root">info</param>
+			</result>
+		</action>
+
+		<action name="edit" class="information" method="edit">
+			<result name="success" type="json">
+				<param name="root">edit</param>
+			</result>
+		</action>
+
+		<action name="submit" class="information" method="submit">
+			<result name="success" type="json">
+				<param name="root">submit</param>
+			</result>
+		</action>
+
+		<action name="add" class="information" method="add">
+			<result name="success" type="json">
+				<param name="root">add</param>
+			</result>
+		</action>
+
+		<action name="addtask" class="information" method="addtask">
+			<result name="success" type="json">
+				<param name="root">addTask</param>
+			</result>
+		</action>
+
+		<action name="delete" class="information" method="delete">
+			<result name="success" type="json">
+				<param name="root">delete</param>
+			</result>
+		</action>
+
+		<action name="classList" class="information" method="queryClassList">
+			<result name="success" type="json">
+				<param name="root">classList</param>
+			</result>
+		</action>
+
+		<action name="InputInfo" class="virnet.management.input.action.InputAction"
+			method="InputInfo">
+			<result name="success" type="json">
+				<param name="root">results</param>
+			</result>
+		</action>
+
+		<action name="submitInfo" class="virnet.management.input.action.InputAction"
+			method="submitInfo">
+			<result name="success" type="json">
+				<param name="root">submit</param>
+			</result>
+		</action>
+
+		<action name="monitor" class="virnet.experiment.monitor.action.MonitorAction"
+			method="sessionConfigure">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="score" class="virnet.management.score.action.ScoreAction"
+			method="sessionConfigure">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="loadScoreInfo" class="virnet.management.score.action.ScoreAction"
+			method="LoadScorePageInfo">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="loadAnsScoreInfo" class="virnet.management.score.action.ScoreAction"
+			method="LoadAnsScorePageInfo">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="showconfigure" class="virnet.management.score.action.ScoreAction"
+			method="LoadConfigureInfo">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="showAnsconfigure" class="virnet.management.score.action.ScoreAction"
+			method="LoadAnsConfigureInfo">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="HandinScore" class="virnet.management.score.action.ScoreAction"
+			method="HandinScore">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="addOrder" class="virnet.management.order.action.orderAction"
+			method="addOrder">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="submitOrder" class="virnet.management.order.action.orderAction"
+			method="submitOrder">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="confirmOrder" class="virnet.management.order.action.orderAction"
+			method="confirmOrder">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="deleteOrder" class="virnet.management.order.action.orderAction"
+			method="deleteOrder">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="groupArrange"
+			class="virnet.management.groupArrange.action.groupArrangeAction"
+			method="groupArrange">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="submitGroupArrange"
+			class="virnet.management.groupArrange.action.groupArrangeAction"
+			method="submitGroupArrange">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="getExplist"
+			class="virnet.management.expArrange.action.expArrangeAction" method="getExplist">
+			<result name="success" type="json">
+				<param name="root">results</param>
+			</result>
+		</action>
+		<action name="perriodOccupy"
+			class="virnet.management.expArrange.action.expArrangeAction" method="perriodOccupy">
+			<result name="success" type="json">
+				<param name="root">results</param>
+			</result>
+		</action>
+		<action name="newARG"
+			class="virnet.management.expArrange.action.expArrangeAction" method="newARG">
+			<result name="success" type="json">
+				<param name="root">results</param>
+			</result>
+		</action>
+		<action name="expDateARG"
+			class="virnet.management.expArrange.action.expArrangeAction" method="expDateARG">
+			<result name="success" type="json">
+				<param name="root">results</param>
+			</result>
+		</action>
+		<action name="showTimeSpan"
+			class="virnet.management.expArrange.action.expArrangeAction" method="showTimeSpan">
+			<result name="success" type="json">
+				<param name="root">results</param>
+			</result>
+		</action>
+		<action name="editARG"
+			class="virnet.management.expArrange.action.expArrangeAction" method="editARG">
+			<result name="success" type="json">
+				<param name="root">results</param>
+			</result>
+		</action>
+
+		<action name="newARG_2"
+			class="virnet.management.expArrange.action.expArrangeAction" method="newARG_2">
+			<result name="success" type="json">
+				<param name="root">results</param>
+			</result>
+		</action>
+		
+		<action name="realExpStuNum"
+			class="virnet.management.realExpStuNum.realExpStuNumAction" method="realExpStuNum">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+	</package>
+</struts>

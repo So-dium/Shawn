@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+             http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+
+	<!-- 自动扫描的包名 -->
+	<context:component-scan base-package="virnet.experiment.webSocket.config">
+	</context:component-scan>
+
+	<context:component-scan base-package="virnet.experiment.webSocket.hndler">
+	</context:component-scan>
+
+	<context:component-scan base-package="virnet.experiment.webSocket.interceptor">
+	</context:component-scan>
+
+
+
+	<!-- 默认的注解映射的支持 -->
+
+
+	<context:annotation-config />
+	<!-- <bean class="com.milanosoft.RCS.web.webSocket.config.WebSocketConfig" 
+		/> -->
+
+
+	<!-- 对静态资源文件的访问 -->
+	<resources mapping="/**" location="/" cache-period="31556926" />
+	<resources mapping="/images/**" location="/images/"
+		cache-period="31556926" />
+	<resources mapping="/js/**" location="/js/" cache-period="31556926" />
+	<resources mapping="/css/**" location="/css/" cache-period="31556926" />
+
+
+</beans:beans>
