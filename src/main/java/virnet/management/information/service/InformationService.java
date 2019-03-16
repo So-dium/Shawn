@@ -132,8 +132,11 @@ public class InformationService {
 								ticDAO.deleteTask(Integer.parseInt((String) deleteInfo.get("expId")), Integer.parseInt((String) deleteInfo.get("expTaskOrder")));
 								break;
 		case "exp-management": ExpInfoCDAO eicDAO = new ExpInfoCDAO();
-		eicDAO.deleteExp((String) deleteInfo.get("expName"));
-		break;
+								eicDAO.deleteExp((String) deleteInfo.get("expName"));
+								break;
+		case "physicsMachines-management":PhysicsMachinesInfoCDAO pmicDao = new PhysicsMachinesInfoCDAO();
+											pmicDao.deletePhysicsMachine((String) deleteInfo.get("machineName"));
+											break;
 		}
 		
 		return map;

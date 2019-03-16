@@ -82,7 +82,7 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 		//Divide by key : user, class, course, experiment, group
 		
 		this.setDetail(this.infoService.showDetail(user, id, key, name , orderId));
-		
+
 		return SUCCESS;
 	}
 	
@@ -164,6 +164,7 @@ public class InformationAction extends ActionSupport implements ServletRequestAw
 			String[] key_value =   entry.split("@@");
 			deleteInfo.put(key_value[0], key_value[1]);
 		}
+		
 		
 		this.setDelete(this.infoService.delete(user, id,deleteInfo));
 		
