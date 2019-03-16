@@ -82,6 +82,12 @@ public class PhysicsMachinesManagement implements InformationQuery{
 			map_jump.put("onclick", "fetchFacilitiesData('facilities-management','" + user + "','0','','" + physicsmachineslist.get(i).getPhysicsMachinesName() + "',false" + ");");
 			physicsmachinesinfo.add(map_jump);
 			
+			Map<String, String> map_delete = new HashMap<String, String>();
+			map_delete.put("name", "删除");
+			map_delete.put("class", "btn btn-new hide deleteButton");
+			map_delete.put("onclick", "deletePhysicsMachine( '"+ physicsmachineslist.get(i).getPhysicsMachinesName() + "');");
+			physicsmachinesinfo.add(map_delete);
+			
 			System.out.println("index : " + i + ", exp id : " + physicsmachineslist.get(i).getPhysicsMachinesId() + ", exp type : " + physicsmachineslist.get(i).getPhysicsMachinesName());
 			
 			list.add(physicsmachinesinfo);
@@ -96,10 +102,18 @@ public class PhysicsMachinesManagement implements InformationQuery{
 		button.put("class", "btn button-new");
 		button.put("click", "addContent('physicsMachines-management');");
 		
+		Map<Object, Object> button_delete = new HashMap<Object, Object>();
+        button_delete.put("content", "- 删除机柜");
+        button_delete.put("class", "btn button-new");
+        button_delete.put("click", "showDeletePhysicsMachinesButton();");
+        button_delete.put("id", "showDeletePhysicsMachinesButton");
+		
+		
 		map.put("data", list);
 		map.put("page", pageNO);
-		map.put("button_new", button);
 		
+		map.put("button_new", button);
+		map.put("button_delete", button_delete);
 		return map;
 	}
 
