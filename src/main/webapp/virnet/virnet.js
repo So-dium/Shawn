@@ -1479,61 +1479,6 @@ function deleteTaskOrder(expId,expTaskOrder,expName){
 		  }
 		});
 }
-
-function showDeletePhysicsMachinesButton(){
-	if($("#showDeletePhysicsMachinesButton").html() == "- 删除机柜"){
-		$(".deleteButton").removeClass("hide");
-		$("#showDeletePhysicsMachinesButton").html("取消");
-		$("#showDeletePhysicsMachinesButton").css("background-color","#e00c1f");
-	}
-	else{
-		$(".deleteButton").addClass("hide");
-		$("#showDeletePhysicsMachinesButton").html("- 删除机柜");
-		$("#showDeletePhysicsMachinesButton").css("background-color","");
-	}
-}
-function deletePhysicsMachine(machineName){
-	
-	var info = "machineName" + "@@" + machineName ;
-//	alert(info);
-	msg = Messenger().post({
-		  message: "确定删除该机柜？",
-		  actions: {
-		    retry: {
-		      label: '确定',
-		      phrase: 'Retrying TIME',
-		      delay: 10,
-		      action: function(){
-		    	  $.ajax({
-		    		  url:'delete.action',
-		    		  data:{
-		    			  user:user.getUser(),
-		    			  id:"physicsMachines-management",
-		    			  data:info
-		    		  },
-		    		  type:'post',      
-		    		  dataType:'json',    
-		    		  success:function(data) {
-		    			  msg = Messenger().post({
-		    		    		message : data["data"],
-		    		    		showCloseButton : true
-		    		      });
-		    			  showContent("physicsMachines-management",0);
-		    		  }
-		    	  });
-		    	  return msg.cancel();
-		      }
-		    },
-		    cancel: {
-		      label:'取消',
-		      action: function() {
-		        return msg.cancel();
-		      }
-		    }
-		  }
-		});
-}
-
 function showDeleteExpButton(){
 	if($("#showDeleteExpButton").html() == "- 删除实验"){
 		$(".deleteButton").removeClass("hide");
@@ -1545,6 +1490,7 @@ function showDeleteExpButton(){
 		$("#showDeleteExpButton").html("- 删除实验");
 		$("#showDeleteExpButton").css("background-color","");
 	}
+	
 }
 
 function deleteExp(expName){
@@ -1588,5 +1534,3 @@ function deleteExp(expName){
 		  }
 		});
 }
-
-

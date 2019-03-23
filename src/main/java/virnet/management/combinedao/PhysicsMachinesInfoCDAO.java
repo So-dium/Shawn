@@ -7,19 +7,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import virnet.management.dao.CabinetTempletDAO;
 import virnet.management.dao.FacilitiesDAO;
 import virnet.management.dao.FacilityntcDAO;
 import virnet.management.dao.PhysicsMachinesDAO;
-import virnet.management.entity.CabinetTemplet;
-import virnet.management.entity.Exp;
 import virnet.management.entity.Facilities;
 import virnet.management.entity.Facilityntc;
 import virnet.management.entity.PhysicsMachines;
 import virnet.management.util.ViewUtil;
 
 public class PhysicsMachinesInfoCDAO {
-	private FacilitiesDAO fDAO = new FacilitiesDAO();
+	
 	private PhysicsMachinesDAO pDAO = new PhysicsMachinesDAO();
 	private FacilityntcDAO  fntcDAO = new FacilityntcDAO();
 	private ViewUtil vutil = new ViewUtil();
@@ -317,6 +314,7 @@ public class PhysicsMachinesInfoCDAO {
 		return map;
 	}
 	
+
 	public Map<String, Object> deletePhysicsMachine(String machineName){
 		
 		
@@ -373,8 +371,7 @@ public class PhysicsMachinesInfoCDAO {
 		return null;		
 	}
 	
-	
-	
+
 	public Map<String, Object> save(String name, Map<String, Object> map){
 		
 		/* RT   type1
@@ -527,28 +524,22 @@ public class PhysicsMachinesInfoCDAO {
 				}
 				System.out.println("portNum" + portNum);
 				for(int j=1;j<=portNum;j++){
-                    Facilityntc facilityntc = new Facilityntc();
-                    facilityntc.setFacilityId(id);
-                    facilityntc.setNtcId(ntcId);
-                    facilityntc.setNtcPortNum(count);
-                    facilityntc.setStatus(0);
-                    /****20180622蒋家盛修改RT端口为0和1, SW3端口从9开始，SW2端口从7开始****/
-                    if(type == 1){
-                        facilityntc.setPortNum(j - 1);
-                    }
-                    else if(type == 2){
-                        facilityntc.setPortNum(j + 8);
-                    }
-                    else if(type == 3) {
-                        facilityntc.setPortNum(j + 6);
-                    }
-                    else {
-                        facilityntc.setPortNum( j );
-                    }
-                    /****20180622蒋家盛修改RT端口为0和1****/
-                    this.fntcDAO.add(facilityntc);
-                    count++;
-                }
+					Facilityntc facilityntc = new Facilityntc();
+					facilityntc.setFacilityId(id);
+					facilityntc.setNtcId(ntcId);
+					facilityntc.setNtcPortNum(count);
+					facilityntc.setStatus(0);
+					/****20180622蒋家盛修改RT端口为0和1****/
+					if(type == 1){
+						facilityntc.setPortNum(j - 1);
+					}
+					else{
+						facilityntc.setPortNum(j);
+					}
+					/****20180622蒋家盛修改RT端口为0和1****/
+					this.fntcDAO.add(facilityntc);
+					count++;
+				}
 			}
 			r.put("isSuccess", true);
 			r.put("name", map.get("physicsMachinesName"));

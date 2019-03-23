@@ -241,12 +241,16 @@ public class ExpArrangement implements InformationQuery {
 			for(int j=0; j<calist.size();j++){
 				int expId = calist.get(j).getClassarrangeCaseExpId();
 				List<Exp> exp = this.expDAO.getListByProperty("expId", expId);
+				if(exp.size() == 0){
+					continue;
+				}
 				Map<String, Object> mapexplist = new HashMap<String, Object>();
 				mapexplist.put("name", exp.get(0).getExpName());
 				mapexplist.put("class", "btn btn-link");
 				mapexplist.put("onclick", "showDetail('" + exp.get(0).getExpName() + "', 'exp');");
 				explist.add(mapexplist);
 			}
+			
 			map_exp.put("name", explist);
 			pInfo.add(map_exp);		
 			list.add(pInfo);
