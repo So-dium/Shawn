@@ -40,14 +40,20 @@ public class InputAction extends ActionSupport implements ServletRequestAware{
 		
 		String user = this.request.getParameter("user");
 		String id = this.request.getParameter("id");
-		Integer classId = Integer.parseInt(this.request.getParameter("classId"));
+		Integer classId = 0;
+		try {
+			classId = Integer.parseInt(this.request.getParameter("classId"));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String infomation = this.request.getParameter("infomation");
 		
 		System.out.println(user + " " +id+" "+classId);
 		
 		switch(id){
 			case"student":this.setSubmit(this.inputService.submitStuInfo(user, id, classId, infomation));break;
-			case"teacher":this.setSubmit(this.inputService.submitTeaInfo(user, id, classId, infomation));break;
+			case"teacher":this.setSubmit(this.inputService.submitTeaInfo(user, id, infomation));break;
 			case"exp-staff":this.setSubmit(this.inputService.submitExpStaffInfo(user, id, infomation));break;
 		}
 		
