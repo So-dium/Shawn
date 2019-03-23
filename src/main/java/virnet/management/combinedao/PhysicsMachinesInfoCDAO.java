@@ -368,30 +368,8 @@ public class PhysicsMachinesInfoCDAO {
 //			fDAO.delete(tf);
 //			fDAO.deleteById(id);
 //		}
-		
-		
-		System.out.println("delete successful!");
-		
-//		Exp exp = (Exp) this.eDAO.getUniqueByProperty("expName", expName);
-//		if(exp == null)
-//			return null;
-//		Integer CabinetTempletId  = exp.getExpCabinetTempletId();
-//		
-//		//删除实验模板设备表
-//		CabinetTempletDeviceInfoCDAO ctdDAO = new CabinetTempletDeviceInfoCDAO();
-//		ctdDAO.deleteEquipment(CabinetTempletId);
-//		
-//		//删除实验模板表
-//		CabinetTempletDAO ctDAO =new CabinetTempletDAO();
-//		CabinetTemplet cabinetTemplet = (CabinetTemplet) ctDAO.getUniqueByProperty("cabinetTempletId", CabinetTempletId);
-//		ctDAO.delete(cabinetTemplet);
-//		
-//		//删除任务表（将该任务下的拓扑、配置、ping信息都一起删除了）
-//		TaskInfoCDAO tDAO = new TaskInfoCDAO(); 
-//		tDAO.deleteAllTask(exp.getExpId());
-//		
-//		this.eDAO.delete(exp);
 	
+		System.out.println("delete successful!");
 		return null;		
 	}
 	
