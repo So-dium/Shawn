@@ -7,19 +7,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import virnet.management.dao.CabinetTempletDAO;
 import virnet.management.dao.FacilitiesDAO;
 import virnet.management.dao.FacilityntcDAO;
 import virnet.management.dao.PhysicsMachinesDAO;
-import virnet.management.entity.CabinetTemplet;
-import virnet.management.entity.Exp;
 import virnet.management.entity.Facilities;
 import virnet.management.entity.Facilityntc;
 import virnet.management.entity.PhysicsMachines;
 import virnet.management.util.ViewUtil;
 
 public class PhysicsMachinesInfoCDAO {
-	private FacilitiesDAO fDAO = new FacilitiesDAO();
+	
 	private PhysicsMachinesDAO pDAO = new PhysicsMachinesDAO();
 	private FacilityntcDAO  fntcDAO = new FacilityntcDAO();
 	private ViewUtil vutil = new ViewUtil();
@@ -317,86 +314,6 @@ public class PhysicsMachinesInfoCDAO {
 		return map;
 	}
 	
-	public Map<String, Object> deletePhysicsMachine(String machineName){
-		
-		
-		PhysicsMachines pm = (PhysicsMachines) this.pDAO.getUniqueByProperty("physicsMachinesName", machineName);
-		if(pm == null)
-			return null;
-		this.pDAO.delete(pm);
-		System.out.println(machineName);
-		//删除facilities
-		FacilitiesDAO f = new FacilitiesDAO();
-		List<Facilities> flist1 = f.getListByProperty("facilitiesBelongPhysicsMachines", machineName);
-		System.out.println("flist1.size="+flist1.size());
-		int n1=flist1.size();
-		for(int i = 0; i < n1; i++) {
-			Integer id1 = flist1.get(i).getFacilitiesId();
-			System.out.println("facilities_id = "+id1);
-			Facilities tf = (Facilities) this.fDAO.getUniqueByProperty("facilitiesId", id1);
-			if (tf == null) {
-				continue;
-			}
-			//删除facilityntc
-			Facilityntc tfntc = new Facilityntc();
-			List<Facilityntc> fntclist2 =  this.fntcDAO.getListByProperty("facilityId", id1);
-			int n2 = fntclist2.size();
-			for (int j =0; j < n2; j++) {
-				Facilityntc temp = fntclist2.get(j);
-				fntcDAO.delete(temp);
-			}
-			
-			
-			fDAO.delete(tf);
-//			fDAO.deleteById(id);
-		}
-		
-//		List<FacilityntcDAO> flist2 = f.getListByProperty("facilityntcBelongPhysicsMachines", machineName);
-//		System.out.println("flist2.size="+flist2.size());
-		
-//		for(int i = 0; i < flist2.size(); i++) {
-//			FacilityntcDAO tfntc = flist2.get(i);
-//			System.out.println("facilityntcID="+tfntc.getListByPage(calzz, pageUtil);)
-//			fntcDAO.delete(tfntc);
-			
-//			Integer id2
-//			System.out.println("facilityntc_id = "+id2);
-//			Facilities tf = (Facilities) this.fDAO.getUniqueByProperty("facilitiesId", id);
-//			if (tf == null) {
-//				continue;
-//			}
-//			fDAO.delete(tf);
-//			fDAO.deleteById(id);
-//		}
-		
-		
-		System.out.println("delete successful!");
-		
-//		Exp exp = (Exp) this.eDAO.getUniqueByProperty("expName", expName);
-//		if(exp == null)
-//			return null;
-//		Integer CabinetTempletId  = exp.getExpCabinetTempletId();
-//		
-//		//删除实验模板设备表
-//		CabinetTempletDeviceInfoCDAO ctdDAO = new CabinetTempletDeviceInfoCDAO();
-//		ctdDAO.deleteEquipment(CabinetTempletId);
-//		
-//		//删除实验模板表
-//		CabinetTempletDAO ctDAO =new CabinetTempletDAO();
-//		CabinetTemplet cabinetTemplet = (CabinetTemplet) ctDAO.getUniqueByProperty("cabinetTempletId", CabinetTempletId);
-//		ctDAO.delete(cabinetTemplet);
-//		
-//		//删除任务表（将该任务下的拓扑、配置、ping信息都一起删除了）
-//		TaskInfoCDAO tDAO = new TaskInfoCDAO(); 
-//		tDAO.deleteAllTask(exp.getExpId());
-//		
-//		this.eDAO.delete(exp);
-	
-		return null;		
-	}
-	
-	
-	
 	public Map<String, Object> save(String name, Map<String, Object> map){
 		
 		/* RT   type1
@@ -549,28 +466,22 @@ public class PhysicsMachinesInfoCDAO {
 				}
 				System.out.println("portNum" + portNum);
 				for(int j=1;j<=portNum;j++){
-                    Facilityntc facilityntc = new Facilityntc();
-                    facilityntc.setFacilityId(id);
-                    facilityntc.setNtcId(ntcId);
-                    facilityntc.setNtcPortNum(count);
-                    facilityntc.setStatus(0);
-                    /****20180622蒋家盛修改RT端口为0和1, SW3端口从9开始，SW2端口从7开始****/
-                    if(type == 1){
-                        facilityntc.setPortNum(j - 1);
-                    }
-                    else if(type == 2){
-                        facilityntc.setPortNum(j + 8);
-                    }
-                    else if(type == 3) {
-                        facilityntc.setPortNum(j + 6);
-                    }
-                    else {
-                        facilityntc.setPortNum( j );
-                    }
-                    /****20180622蒋家盛修改RT端口为0和1****/
-                    this.fntcDAO.add(facilityntc);
-                    count++;
-                }
+					Facilityntc facilityntc = new Facilityntc();
+					facilityntc.setFacilityId(id);
+					facilityntc.setNtcId(ntcId);
+					facilityntc.setNtcPortNum(count);
+					facilityntc.setStatus(0);
+					/****20180622蒋家盛修改RT端口为0和1****/
+					if(type == 1){
+						facilityntc.setPortNum(j - 1);
+					}
+					else{
+						facilityntc.setPortNum(j);
+					}
+					/****20180622蒋家盛修改RT端口为0和1****/
+					this.fntcDAO.add(facilityntc);
+					count++;
+				}
 			}
 			r.put("isSuccess", true);
 			r.put("name", map.get("physicsMachinesName"));

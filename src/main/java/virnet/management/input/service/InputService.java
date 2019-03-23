@@ -47,6 +47,7 @@ public class InputService {
 		ctlist = ctDAO.getListByHql(hql);
 		
 		int size = ctlist.size();
+		System.out.println("xxxxxx");
 		System.out.println("Class list size : " + size);
 		
 		//结构： 课程名 班级名
@@ -104,30 +105,30 @@ public class InputService {
 		Map<String, Object> guide = new HashMap<String, Object>();
 		guide.put("data", "请输入教师工号，以回车分割，请勿重复输入");
 		
-		//所有班级
-		ClassDAO cDAO = new ClassDAO();
-
-		@SuppressWarnings("unchecked")
-		List<Class> clist = cDAO.getList();
+//		//所有班级
+//		ClassDAO cDAO = new ClassDAO();
+//
+//		@SuppressWarnings("unchecked")
+//		List<Class> clist = cDAO.getList();
+//		
+//		int size = clist.size();
+//		System.out.println("Class list size : " + size);
+//		
+//		List<Map<String, Object>> cclist = new ArrayList<Map<String, Object>>();
+//		for(int i = 0; i < size; i++){
+//			Map<String, Object> cmap = new HashMap<String, Object>();
+//			
+//			int courseid = clist.get(i).getClassCourseId();
+//			CourseDAO courseDAO = new CourseDAO();
+//			Course course = (Course) courseDAO.getUniqueByProperty("courseId", courseid);
+//			
+//			cmap.put("name",  course.getCourseName() + " " + clist.get(i).getClassName());
+//			cmap.put("value", clist.get(i).getClassId());
+//			
+//			cclist.add(cmap);
+//		}
 		
-		int size = clist.size();
-		System.out.println("Class list size : " + size);
-		
-		List<Map<String, Object>> cclist = new ArrayList<Map<String, Object>>();
-		for(int i = 0; i < size; i++){
-			Map<String, Object> cmap = new HashMap<String, Object>();
-			
-			int courseid = clist.get(i).getClassCourseId();
-			CourseDAO courseDAO = new CourseDAO();
-			Course course = (Course) courseDAO.getUniqueByProperty("courseId", courseid);
-			
-			cmap.put("name",  course.getCourseName() + " " + clist.get(i).getClassName());
-			cmap.put("value", clist.get(i).getClassId());
-			
-			cclist.add(cmap);
-		}
-		
-		List<Map<String, Object>> cName = this.vutil.createList("", "", "", cclist, "singleselect", "", "inputClassName",(Integer)cclist.get(0).get("value"));
+//		List<Map<String, Object>> cName = this.vutil.createList("", "", "", cclist, "singleselect", "", "inputClassName",(Integer)cclist.get(0).get("value"));
 
 		//输入框
 		Map<String, Object> infomation = new HashMap<String, Object>();
@@ -141,7 +142,7 @@ public class InputService {
 		
 		r.put("tittle", tittle);
 		r.put("guide", guide);
-		r.put("select", cName);
+//		r.put("select", cName);
 		r.put("infomation", infomation);
 		r.put("button", submit);
 
@@ -288,7 +289,7 @@ public class InputService {
 		return r;	
 	}
 	
-public Map<String, Object> submitTeaInfo(String user, String id, Integer classId, String information) {
+public Map<String, Object> submitTeaInfo(String user, String id, String information) {
 		
 		Map<String, Object> r = new HashMap<String, Object>();
 		
@@ -318,22 +319,22 @@ public Map<String, Object> submitTeaInfo(String user, String id, Integer classId
 		}
 		
 
-		//首先判断该班是否有已经重复出现的教师
-		for(int i=0;i<teacherId.length;i++){
-			
-			String hql = "select t1.classTeacherTeacherId "
-					+ "from ClassTeacher as t1 "
-					+ "where t1.classTeacherTeacherId = " + teacherId[i]
-					+ " and t1.classTeacherClassId = " + classId;
-			
-			System.out.println(hql);
-			
-			if(usrDAO.getUniqueByHql(hql)!=null){
-				r.put("isSuccess", false);
-				r.put("data", "导入失败，该班存在已有教师");
-				return r;
-			}
-		}
+//		//首先判断该班是否有已经重复出现的教师
+//		for(int i=0;i<teacherId.length;i++){
+//			
+//			String hql = "select t1.classTeacherTeacherId "
+//					+ "from ClassTeacher as t1 "
+//					+ "where t1.classTeacherTeacherId = " + teacherId[i]
+//					+ " and t1.classTeacherClassId = " + classId;
+//			
+//			System.out.println(hql);
+//			
+//			if(usrDAO.getUniqueByHql(hql)!=null){
+//				r.put("isSuccess", false);
+//				r.put("data", "导入失败，该班存在已有教师");
+//				return r;
+//			}
+//		}
 		
 		for(int i=0;i<teacherId.length;i++){
 			
@@ -372,20 +373,20 @@ public Map<String, Object> submitTeaInfo(String user, String id, Integer classId
 		}
 		
 		
-		//修改班级教师表
-		for(int i=0;i<teacherId.length;i++){
-			 
-			ClassTeacher classTeacher = new ClassTeacher();
-			classTeacher.setClassTeacherClassId(classId);
-			classTeacher.setClassTeacherTeacherId(Integer.parseInt(teacherId[i]));
-			
-			ClassTeacherDAO classTeacherDAO = new ClassTeacherDAO();
-			if(!classTeacherDAO.add(classTeacher)){
-				r.put("isSuccess", false);
-				r.put("data", "修改教师上课表失败");
-				return r;
-			}
-		}
+//		//修改班级教师表
+//		for(int i=0;i<teacherId.length;i++){
+//			 
+//			ClassTeacher classTeacher = new ClassTeacher();
+//			classTeacher.setClassTeacherClassId(classId);
+//			classTeacher.setClassTeacherTeacherId(Integer.parseInt(teacherId[i]));
+//			
+//			ClassTeacherDAO classTeacherDAO = new ClassTeacherDAO();
+//			if(!classTeacherDAO.add(classTeacher)){
+//				r.put("isSuccess", false);
+//				r.put("data", "修改教师上课表失败");
+//				return r;
+//			}
+//		}
 			
 		r.put("isSuccess", true);
 		r.put("data", "导入成功");
